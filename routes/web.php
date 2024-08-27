@@ -10,7 +10,8 @@ Route::get('/', function () {
 });
 
 Route::get('/jobs', function () {
-    return view('jobs', ['jobs' => Job::all()]);
+    $job = Job::with('employer')->get();
+    return view('jobs', ['jobs' => $jobs]);
 });
 
 //Jobs Route to return the description of the job the person has picked.
